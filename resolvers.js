@@ -4,7 +4,6 @@ const resolvers = {
   Query: {
     getAllTeams: async () => {
       const team = await Team.find();
-      console.log(team);
       return team;
     },
 
@@ -18,7 +17,6 @@ const resolvers = {
     createTeam: async (_, args) => {
       const { name, presidenteName, dtName, value } = args.team;
       const newTeam = new Team({ name, presidenteName, dtName, value });
-      console.log(newTeam);
       await newTeam.save();
       return newTeam;
     },
@@ -28,6 +26,7 @@ const resolvers = {
     },
 
     async updateTeam(_, { team, id }) {
+      console.log(id);
       const teamUpdate = await Team.findByIdAndUpdate(
         id,
         { $set: team },
