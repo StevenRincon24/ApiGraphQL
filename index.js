@@ -8,7 +8,7 @@ require("./db");
 const app = express();
 
 const startServer = async () => {
-  const PORT = process.env.PORT;
+  const PORT = process.env.PORT || 4000;
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
